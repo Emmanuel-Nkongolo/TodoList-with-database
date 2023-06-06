@@ -1,0 +1,30 @@
+<%- include("header") -%>
+
+  <div class="box" id="heading">
+    <h1> <%= listTitle %> </h1>
+  </div>
+
+  <div class="box">
+  <!--The use of a forEach loop to only display the item name using ejs methods-->
+  <% newListItems.forEach(function(newListItem){ %>
+    <!--creating a new form that will be responsible for deleting our items that have been checked with the checked box-->
+    <form action="/delete" method="post">
+       <div class="item">
+<!--The addition of a submit kindof action for our checkbox whenever is checked-->
+<!--And giving the input a name to help us get our hands on it in our app.js + adding the value to it so we can have our hands on something we can use in our mongoose-->
+        <input type="checkbox" name="checkbox" value="<%=newListItem._id%>" onChange="this.form.submit()">
+        <p><%=  newListItem.name  %></p>
+      </div>
+      <!--Adding a hidden input to this form only to help us get a hold of the content since the only input is already in use for the main page-->
+    <input type="hidden" name="listName" value="<%= listTitle %>"></input>
+    </form>
+      <% }) %>
+
+      <form class="item" action="/" method="post">
+          <input type="text" name="newItem" placeholder="New Item" autocomplete="off">
+        <!--Giving our button a value equal to the h1 so we can add our content to the right list-->
+          <button type="submit" name="list" value="<%= listTitle %>">+</button>
+      </form>
+  </div>
+
+<%- include("footer") -%>
