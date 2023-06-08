@@ -16,7 +16,7 @@ app.use(express.static("public"));
 //here is the normal port
 //mongoose.connect("mongodb://127.0.0.1:27017/todolistDB")
 
-mongoose.connect("mongodb+srv://<yourName-and password here>@cluster0.emvm6in.mongodb.net/todolistDB");
+mongoose.connect("mongodb+srv://Emmanuel:test123@cluster0.emvm6in.mongodb.net/todolistDB");
 //The creation of the schema or structure of our items
 const itemsSchema = {
   name : String
